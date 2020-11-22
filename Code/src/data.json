@@ -1,0 +1,136 @@
+{
+    "products": [
+        {
+            "_id": "thing1",
+            "title": "name1",
+            "image": "/images/thing1.png",
+            "description": "type1",
+            "price": 400,
+            "availableSizes": [
+                "X",
+                "S"
+            ]
+        },
+        {
+            "_id": "thing2",
+            "title": "name2",
+            "image": "/images/thing2.png",
+            "description": "type2",
+            "price": 400,
+            "availableSizes": [
+                "X",
+                "S"
+            ]
+        },
+        {
+            "_id": "thing3",
+            "title": "name3",
+            "image": "/images/thing3.png",
+            "description": "type3",
+            "price": 400,
+            "availableSizes": [
+                "X",
+                "S"
+            ]
+        },
+        {
+            "_id": "thing4",
+            "title": "name4",
+            "image": "/images/thing4.png",
+            "description": "type4",
+            "price": 400,
+            "availableSizes": [
+                "X",
+                "S"
+            ]
+        },
+        {
+            "_id": "thing5",
+            "title": "name5",
+            "image": "/images/thing5.png",
+            "description": "type5",
+            "price": 400,
+            "availableSizes": [
+                "X",
+                "S"
+            ]
+        },
+        {
+            "_id": "thing6",
+            "title": "name6",
+            "image": "/images/thing6.png",
+            "description": "type6",
+            "price": 400,
+            "availableSizes": [
+                "X",
+                "S"
+            ]
+        },
+        {
+            "_id": "thing7",
+            "title": "name7",
+            "image": "/images/thing7.png",
+            "description": "type7",
+            "price": 400,
+            "availableSizes": [
+                "X",
+                "S"
+            ]
+        },
+        {
+            "_id": "thing8",
+            "title": "name8",
+            "image": "/images/thing8.png",
+            "description": "type8",
+            "price": 400,
+            "availableSizes": [
+                "X",
+                "S"
+            ]
+        },
+        {
+            "_id": "thing9",
+            "title": "name9",
+            "image": "/images/thing9.png",
+            "description": "type9",
+            "price": 400,
+            "availableSizes": [
+                "X",
+                "S"
+            ]
+        },
+        {
+            "_id": "thing10",
+            "title": "name10",
+            "image": "/images/thing10.png",
+            "description": "type10",
+            "price": 400,
+            "availableSizes": [
+                "X",
+                "S"
+            ]
+        },
+        {
+            "_id": "thing11",
+            "title": "name11",
+            "image": "/images/thing11.png",
+            "description": "type11",
+            "price": 400,
+            "availableSizes": [
+                "X",
+                "S"
+            ]
+        },
+        {
+            "_id": "thing12",
+            "title": "name12",
+            "image": "/images/thing12.png",
+            "description": "type12",
+            "price": 400,
+            "availableSizes": [
+                "X",
+                "S"
+            ]
+        }
+    ]
+}

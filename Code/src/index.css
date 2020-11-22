@@ -1,0 +1,151 @@
+html{
+  font-size: 1.6rem;
+  box-sizing: border-box;
+  /* background-color: yellow; */
+}
+ 
+body,
+#root{
+  height: 100vh;
+  margin: 0;
+}
+ 
+.gridContainer{
+  display: grid;
+  grid-template-areas: "header"
+  "main"
+  "footer";
+  grid-template-rows: 5rem 1fr 5rem;
+  grid-template-columns: 1fr; 
+   height: 100%;
+}
+ 
+a:hover{
+  color: aqua;
+}
+header{
+  grid-area: header;
+  background-color: grey;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: .5rem;
+}
+ 
+header a{
+  color: white;
+  text-decoration: none;
+}
+ 
+/* nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 50px 60px 0 60px;
+  color: white;
+ 
+}
+ 
+nav li {
+  list-style: none;
+  display: inline-block;
+  padding-right: 10px;
+  padding-left: 10px;
+  color: white;
+ 
+}
+ 
+/* highlight of home and cart links */
+/* li a {
+  padding: 5px;
+  background-color: rgb(43, 43, 43);
+  text-decoration: none;
+  color: white;
+ 
+} */ 
+ 
+main{
+  grid-area: main;
+  color: white;
+  background-color: tomato;
+}
+ 
+footer{
+  grid-area: footer;
+  color: white;
+  background-color: wheat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ 
+.content{
+  display: flex;
+  flex-wrap: wrap;
+  background-color: chartreuse;
+}
+.main{
+  flex: 100% 60vw;
+  /* padding-right: 60vw; */
+  background-color: aqua;
+}
+.shopping{
+  flex: 1rem 20rem;
+  background-color: brown;
+}
+ 
+/* products */
+.products{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+ 
+.products li{
+  flex: 0rem 1rem 20rem;
+  background-color: chocolate;
+  height: 30vw;
+  padding: 1rem;
+  margin: 1rem;
+}
+ 
+.product{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+ 
+.product img{
+  width: 17vw;
+  height: 15vw;
+}
+ 
+.product-price{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+ 
+.product-price div,
+.product-price button{
+  text-align: center;
+  flex: 1;
+}
+ 
+.button{
+  padding: .5vw;
+  background-color: lightgray;
+}
+ 
+.button:hover{
+  color: white;
+  background-color: grey;
+}
