@@ -16,9 +16,9 @@
             "title": "name2",
             "image": "/images/thing2.png",
             "description": "type2",
-            "price": 400,
+            "price": 550,
             "availableSizes": [
-                "X",
+                "XL",
                 "S"
             ]
         },
@@ -27,7 +27,7 @@
             "title": "name3",
             "image": "/images/thing3.png",
             "description": "type3",
-            "price": 400,
+            "price": 10,
             "availableSizes": [
                 "X",
                 "S"
@@ -38,7 +38,7 @@
             "title": "name4",
             "image": "/images/thing4.png",
             "description": "type4",
-            "price": 400,
+            "price": 900,
             "availableSizes": [
                 "X",
                 "S"
@@ -51,7 +51,7 @@
             "description": "type5",
             "price": 400,
             "availableSizes": [
-                "X",
+                "XS",
                 "S"
             ]
         },
@@ -63,7 +63,7 @@
             "price": 400,
             "availableSizes": [
                 "X",
-                "S"
+                "M"
             ]
         },
         {
@@ -73,7 +73,7 @@
             "description": "type7",
             "price": 400,
             "availableSizes": [
-                "X",
+                "L",
                 "S"
             ]
         },

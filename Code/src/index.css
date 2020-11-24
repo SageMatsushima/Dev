@@ -149,3 +149,15 @@ footer{
   color: white;
   background-color: grey;
 }
+
+.filter{
+  display: flex;
+  padding: 1rem;
+  margin: 1rem;
+  border-bottom: .1rem #d0d0d0 solid;
+  justify-content: space-between;
+}
+
+.filter div{
+  flex: 1;
+}

@@ -1,13 +1,8 @@
 import React, { Component } from 'react'
-// import formatCurrency from "../util"
+import formatCurrency from "../util"
 
 export default class Products extends Component {
     render() {
-        //     const { price, filterText } = this.props;
-        //     const products = data
-        //       .filter(name => {
-        //         return name.name.toLowerCase().indexOf(filterText) >= 0
-        //       })
         return (
             <div>
                 <ul className="products">
@@ -19,8 +14,8 @@ export default class Products extends Component {
                                     <p>{product.title}</p>
                                 </a>
                                 <div className="productPrice">
-                                    <div>{product.price}</div>
-                                    <button className="button primary">Add to Cart</button>
+                                    <div>{formatCurrency(product.price)}</div>
+                                    <button onClick={() => this.props.addToCart(product)} className="button primary">Add to Cart</button>
                                 </div>
                             </div>
                         </li>
