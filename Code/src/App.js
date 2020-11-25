@@ -12,84 +12,92 @@ class App extends Component {
     this.state = {
       products: data.products,
       cart: [],
-      size: "",
+      types: "",
+      evolution: "",
       sort: "",
     };
   }
 
-  // addToCart = (product) => {
-  //   const cartItems = this.state.cartItems;
-  //   let alreadyInCart = false;
-  //   cartItems.forEach((item) => {
-  //     if (item._id === product._id) {
-  //       item.count++;
-  //       alreadyInCart = true;
-  //     }
-  //   });
-  //   if (!alreadyInCart) {
-  //     cartItems.push({ ...product, count: 1 });
-  //   }
-  //   this.setState({ cartItems });
-  // };
+  addToCart = (product) => {
+    const cartItems = this.state.cartItems.slice();
+    let alreadyInCart = false;
+    cartItems.forEach((item) => {
+      if (item._id === product._id) {
+        item.count++;
+        alreadyInCart = true;
+      }
+    });
+    if (!alreadyInCart) {
+      cartItems.push({ ...product, count: 1 });
+    }
+    this.setState({ cartItems });
+  };
 
-  // filterProducts = (event) => {
-  //   console.log(event.target.value);
-  //   if (event.target.value === "") {
-  //     this.setState({ size: event.target.value, products: data.products });
-  //   } else {
-  //     this.setState({
-  //       size: event.target.value,
-  //       products: data.products.filter(
-  //         (product) => product.availableSizes.indexOf(event.target.value) >= 0
-  //       ),
-  //     });
-  //   }
-  // };
+  filter = (type, evolution) => {
+    let filteredProducts = data.products;
+
+    // Reduce by filtering type if set
+    if (type !== "") {
+      filteredProducts = filteredProducts.filter((product) => product.type.indexOf(type) >= 0)
+    }
+
+    if (evolution !== "") {
+      filteredProducts = filteredProducts.filter((product) => product.evolution === parseInt(evolution))
+      console.log(`PRODUCTS THAT ARE TYPE ${type} - ${JSON.stringify(filteredProducts)}`)
+    }
+
+    this.setState({ types: type, evolution: evolution, products: this.sort(filteredProducts, this.state.sort) });
+  }
+
+  sort = (products, sortMethod) => {
+    return products.slice().sort((a, b) => {
+      if (sortMethod === "lowest") {
+        return a.price > b.price ? 1 : -1;
+      } else {
+        return a.price < b.price ? 1 : -1;
+      }
+    })
+  }
+
+  typeFilter = (event) => {
+    this.filter(event.target.value, this.state.evolution)
+  };
+
+  evolutionFilter = (event) => {
+    this.filter(this.state.types, event.target.value);
+  };
 
   sortProducts = (event) => {
     const sort = event.target.value;
-    console.log(event.target.value);
     this.setState((state) => ({
       sort: sort,
-      products: this.state.products.slice().sort((a, b) => {
-        if (sort === "lowest") {
-          return a.price > b.price ? 1 : -1;
-        } else {
-          return a.price < b.price ? 1 : -1;
-        }
-      })
+      products: this.sort(this.state.products, sort)
     }));
-
-    console.log(this.state);
-    console.log("CHANGED DROP DOWN ITEM")
-  };
+  }
 
   render() {
     return (
       <div className="gridContainer">
         <header>
-          <a href="#">Shopping</a>
+          <h1>Pokemanz</h1>
         </header>
         <main>
           <div className="content">
             <div className="main">
-              <Filter count={this.state.products.length}>
-                size={this.state.size}
+              <Filter count={this.state.products.length}
+                types={this.state.types}
                 sort={this.state.sort}
-                {/* filterProducts={this.filterProducts} */}
-                sortProducts={() => this.sortProducts()}
-              </Filter>
-              <Products products={this.state.products} addToCart={this.addToCart}></Products>
-            </div>
+                typeFilter={this.typeFilter}
+                evolutionFilter={this.evolutionFilter}
+                sortProducts={this.sortProducts} />
 
-            <div className="shopping">
-              {/* <Cart>cartItems = {this.state.cartItems}</Cart> */}
+              <Products products={this.state.products} addToCart={this.addToCart} />
             </div>
 
           </div>
         </main>
         <footer>
-          end
+          {/* <Cart cartItems={this.state.cartItems} /> */}
         </footer>
 
       </div>
