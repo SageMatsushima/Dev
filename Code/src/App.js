@@ -11,26 +11,35 @@ class App extends Component {
     super()
     this.state = {
       products: data.products,
-      cart: [],
+      cartItems: [],
       types: "",
       evolution: "",
       sort: "",
     };
   }
 
+  removeFromCart = (product) => {
+    const cartItems = this.state.cartItems.slice();
+    this.setState({
+      cartItems: cartItems.filter((x) => x._id !== product._id),
+    })
+  }
+
   addToCart = (product) => {
     const cartItems = this.state.cartItems.slice();
-    let alreadyInCart = false;
+    let inCart = false;
     cartItems.forEach((item) => {
       if (item._id === product._id) {
         item.count++;
-        alreadyInCart = true;
+        inCart = true;
+        console.log("already in cart")
       }
     });
-    if (!alreadyInCart) {
+    if (!inCart) {
       cartItems.push({ ...product, count: 1 });
     }
     this.setState({ cartItems });
+    console.log(cartItems)
   };
 
   filter = (type, evolution) => {
@@ -43,7 +52,6 @@ class App extends Component {
 
     if (evolution !== "") {
       filteredProducts = filteredProducts.filter((product) => product.evolution === parseInt(evolution))
-      console.log(`PRODUCTS THAT ARE TYPE ${type} - ${JSON.stringify(filteredProducts)}`)
     }
 
     this.setState({ types: type, evolution: evolution, products: this.sort(filteredProducts, this.state.sort) });
@@ -92,13 +100,13 @@ class App extends Component {
                 sortProducts={this.sortProducts} />
 
               <Products products={this.state.products} addToCart={this.addToCart} />
+              <div className="cart">
+                <Cart cartItems={this.state.cartItems} removeFromCart={this.removeFromCart} />
+              </div>
             </div>
 
           </div>
         </main>
-        <footer>
-          {/* <Cart cartItems={this.state.cartItems} /> */}
-        </footer>
 
       </div>
     );

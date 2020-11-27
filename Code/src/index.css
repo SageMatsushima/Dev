@@ -17,7 +17,7 @@ body,
 		"header"
 		"main"
 		"footer";
-	grid-template-rows: 5rem 1fr 2rem;
+	grid-template-rows: 5rem 1fr 16rem;
 	grid-template-columns: 1fr;
 	height: 100%;
 }
@@ -139,4 +139,32 @@ footer {
 
 .but {
 	font-size: 1.5vw;
+}
+
+.cart{
+	padding: 1rem;
+	margin: 1rem;
+	display: flex;
+}
+
+.cart-header{
+	border-bottom: .1rem black solid;
+}
+
+.cart-items{
+	padding: 0%;
+	width: 100%;
+	list-style-type: none;
+}
+.cart-items img{
+	width: 5rem;
+}
+.cart-items li{
+	display: flex;
+}
+.cart-items div{
+	padding: .5rem;
+}
+.cart-items li div:last-child{
+	flex: 1;
 }
