@@ -20,10 +20,23 @@ class App extends Component {
 
   removeFromCart = (product) => {
     const cartItems = this.state.cartItems.slice();
+    let inCart = false;
+    // cartItems.forEach((item) => {
+    //   if (item.count > 1) {
+    //     item.count--;
+    // inCart = true;
+    //   }
+    //   if (item.count === 1) {
     this.setState({
-      cartItems: cartItems.filter((x) => x._id !== product._id),
+      cartItems: cartItems.filter((x) => x._id !== product._id)
     })
-  }
+    // this.setState({ cartItems });
+    // console.log(cartItems)
+    // this.setState({
+    // cartItems: cartItems.filter((x) => x._id !== product._id),
+    // }
+    // }
+  };
 
   addToCart = (product) => {
     const cartItems = this.state.cartItems.slice();
@@ -32,14 +45,12 @@ class App extends Component {
       if (item._id === product._id) {
         item.count++;
         inCart = true;
-        console.log("already in cart")
       }
     });
     if (!inCart) {
       cartItems.push({ ...product, count: 1 });
     }
     this.setState({ cartItems });
-    console.log(cartItems)
   };
 
   filter = (type, evolution) => {
@@ -55,7 +66,7 @@ class App extends Component {
     }
 
     this.setState({ types: type, evolution: evolution, products: this.sort(filteredProducts, this.state.sort) });
-  }
+  };
 
   sort = (products, sortMethod) => {
     return products.slice().sort((a, b) => {
@@ -65,7 +76,7 @@ class App extends Component {
         return a.price < b.price ? 1 : -1;
       }
     })
-  }
+  };
 
   typeFilter = (event) => {
     this.filter(event.target.value, this.state.evolution)
@@ -81,7 +92,7 @@ class App extends Component {
       sort: sort,
       products: this.sort(this.state.products, sort)
     }));
-  }
+  };
 
   render() {
     return (

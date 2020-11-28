@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+# App JS
+    It contains the constructor for the React file and uses each component with the set state to update each item based on the actions of the user. Every
+    variable is set to the default "All" or null value when it is first reloaded. The main render component returns an instance of each file and sets each 
+    name to the respective method. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+    <-- Methods  -->
+        This file holds the methods that the overall website uses such as: remove item from the cart, add item from the cart, and the filter/sort method. 
 
-## Available Scripts
+<!-- removeFromCart -->
+            This method takes in a product and sets the array of the cartItems to the updated amount of items. It then 
+    const cartItems = this.state.cartItems.slice();
+    // cartItems.forEach((item) => {
+    //   if (item.count > 1) {
+    //     item.count--;
+    //   }
+    //   if (item.count === 1) {
+    this.setState({
+      cartItems: cartItems.filter((x) => x._id !== product._id)
+    })
+    // this.setState({ cartItems });
+    // console.log(cartItems)
+    // this.setState({
+    // cartItems: cartItems.filter((x) => x._id !== product._id),
+    // }
+    // }
+  };
 
-In the project directory, you can run:
+        <-- addToCart  -->
+            This method also takes in a product and uses it to put into the cartItem array. It first sets the array of the cartItems to the updated amount 
+            of items. Then it creates a boolean variable that is set to false/ not in the cartItem array. It then goes through each item in the array and 
+            if the item is in the array, it updates the count/number of items. If not, it adds it to the array of products/cart. It then updates the cart.
+    
 
-### `npm start`
+        <-- filter -->
+            This method takes in the type and evolution that the user set/is set for the dropdown buttons. It then creates a let variable and sets it to the
+            data/products from the data. If both the type and evolution options clicked from the dropdown buttons are not ""(all) or null, then filter the 
+            products based on the type / evolution. Then update the state of each type, evolution, and the products. If it is "" (all) or null, don't do anything.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+         <-- sort -->
+            This method takes in the products and the sort method that is used. It then returns the sorted list of products that are compared to each 
+            other. If the user chose the "lowest" option, the method returns the list that compares the products price to each other and if it is lower, 
+            then it places it first in the data. If not, it sets the price from highest to lowest.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+         <-- typeFilter -->
+            This method takes in an event (when the user Clicks on the option) and runs the filter method to update all three (filter and sort methods) using 
+            the clicked option and the updated evolution (other filter method) state.
 
-### `npm test`
+        <-- evolutionFilter -->
+            This method takes in an event (when the user Clicks on the option) and runs the filter method to update all three (filter and sort methods) using 
+            the clicked option and the updated types (other filter method) state.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+        <-- sortProducts  -->
+            This method takes in an event (when the user Clicks on the option) and sets a constant (sort) to the clicked option. It then sets and updates the state
+            of the sort option clicked and also updates the data/product list and runs the sort method with the data/products list and sorts based on the option clicked.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Filter JS
+    This file just creates the dropdown buttons and sets the values to the props value corresponding to the types/evolutions/sorts. It also corresponds each onChange to the
+    respective method from the App class.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<!-- # Cart JS -->
+    This file sets the cart up. If there are no items in the cart, then show that the cart is empty. ????????????????cart length error shit????????????
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    It then makes a cart and maps each item to its appropriate id, title, count, etc when added. Each item also has a remove button that calls the remove method and removes
+    all items of the type from the cart. It also creates a total at the bottom of the cart to add up the total price of the order by multiplying the items price to its count.
 
-### `npm run eject`
+        {cartItems.length === 0 ? (
+          <div className="cart cart-header">Cart is empty</div>
+        ) : (
+            <div className="cart cart-header">
+              You have {cartItems.length} in the cart{" "}
+            </div>
+          )}
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Products JS
+    This file creates the basic profile for each product. From the data in the Data.JSON file, it makes a item with the appropriate id, title, price, etc and adds the add to 
+    cart button that calls the addToCart method from the app class when clicked.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+# Data . JSON
+    This JSON file holds the basic information for each products and stores it all in a products array. These properties are able to be accessed when looking through the 
+    products array. They consist of the id, title, price, type, evolution, image, and description.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# Util JS
+    This file is just for the formatting of currency and updating it for every change in the cart
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Index CSS
+    Basic CSS file for the React app.

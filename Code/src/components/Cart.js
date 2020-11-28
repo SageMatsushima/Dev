@@ -13,9 +13,10 @@ export default class Cart extends Component {
               You have {cartItems.length} in the cart{" "}
             </div>
           )}
+
         <div className="cart">
           <ul className="cartItems">
-            {cartItems.map(item => {
+            {cartItems.map(item => (
               <li key={item._id}>
                 <div>
                   <img src={item.image} alt={item.title}></img>
@@ -29,7 +30,7 @@ export default class Cart extends Component {
                     <button className="button" onClick={() => this.props.removeFromCart(item)}>Remove</button></div>
                 </div>
               </li>
-            })}
+            ))}
           </ul>
         </div>
         <div className="cart">
