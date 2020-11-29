@@ -7,22 +7,23 @@
         This file holds the methods that the overall website uses such as: remove item from the cart, add item from the cart, and the filter/sort method. 
 
 <!-- removeFromCart -->
-            This method takes in a product and sets the array of the cartItems to the updated amount of items. It then 
+        This method 
+
     const cartItems = this.state.cartItems.slice();
-    // cartItems.forEach((item) => {
-    //   if (item.count > 1) {
-    //     item.count--;
-    //   }
-    //   if (item.count === 1) {
-    this.setState({
-      cartItems: cartItems.filter((x) => x._id !== product._id)
-    })
-    // this.setState({ cartItems });
-    // console.log(cartItems)
-    // this.setState({
-    // cartItems: cartItems.filter((x) => x._id !== product._id),
-    // }
-    // }
+    cartItems.forEach((item) => {
+      if (item.count > 1 && item._id === product._id) {
+        item.count--;
+        cartItems.length--;
+        console.log(cartItems.length)
+        console.log(item.count)
+        this.setState({ cartItems })
+      }
+      else if (item._id === product._id && item.count === 1) {
+        this.setState({
+          cartItems: cartItems.filter((item) => item._id !== product._id),
+        })
+      }
+    });
   };
 
         <-- addToCart  -->

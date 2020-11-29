@@ -9,11 +9,11 @@ export default class Products extends Component {
                     {this.props.products.map(product => (
                         <li key={product._id}>
                             <div className="product">
-                                <a herf={"#" + product._id}>
-                                    <img src={product.image} alt={product._id}></img>
-                                    <p>{product._id}</p>
-                                </a>
-                                <p> Type: {product.type}<br/>
+                                <img src={product.image} alt={product._id}></img>
+                                <p className="name">{product._id}</p>
+                                <p className="description">{product.description}</p>
+
+                                <p> Type: {product.type}<br />
                                     Evolution: {product.evolution}
                                 </p>
                                 <div className="productPrice">

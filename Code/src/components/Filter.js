@@ -4,13 +4,13 @@ export default class Filter extends Component {
     render() {
         return (
             <div className="filter">
-                <div className="filter-result">{this.props.count} Products</div>
-                <div className="filter-sort">Order{" "}<select className="but" value={this.props.sort} onChange={this.props.sortProducts}>
+                <div>{this.props.count} Products</div>
+                <div>Order{" "}<select className="filterName" value={this.props.sort} onChange={this.props.sortProducts}>
                     <option>All</option>
                     <option value="lowest">lowest</option>
                     <option value="highest">highest</option>
                 </select></div>
-                <div className="type">Type{" "}<select className="but" value={this.props.type} onChange={this.props.typeFilter}>
+                <div>Type{" "}<select className="filterName" value={this.props.type} onChange={this.props.typeFilter}>
                     <option value="">All</option>
                     <option value="Bug ">Bug</option>
                     <option value="Dark ">Dark</option>
@@ -25,7 +25,7 @@ export default class Filter extends Component {
                     <option value="Psychic ">Psychic</option>
                     <option value="Water ">Water</option>
                 </select></div>
-                <div className="evolution">Evolution{" "}<select className="but"value={this.props.evolution} onChange={this.props.evolutionFilter}>
+                <div>Evolution{" "}<select className="filterName" value={this.props.evolution} onChange={this.props.evolutionFilter}>
                     <option value="">All</option>
                     <option value="1">1</option>
                     <option value="2">2</option>

@@ -10,34 +10,36 @@ export default class Cart extends Component {
           <div className="cart cart-header">Cart is empty</div>
         ) : (
             <div className="cart cart-header">
-              You have {cartItems.length} in the cart{" "}
+              You have <b>{cartItems.length}</b> item(s) in the cart{" "}
             </div>
           )}
-
         <div className="cart">
           <ul className="cartItems">
-            {cartItems.map(item => (
-              <li key={item._id}>
-                <div>
-                  <img src={item.image} alt={item.title}></img>
-                </div>
-                <div>
-                  <div>
-                    {item.title}
+            <div>
+              {cartItems.map(item => (
+                <li key={item._id}>
+                  <div className="item">
+                    <div className="img">
+                      <img className="cartImage" src={item.image} alt={item._id}></img>
+                    </div>
+                    <div className="des">
+                      <p className="title">
+                        {item._id}
+                      </p>
+                      <div>
+                        {formatCurrency(item.price)} x {item.count}
+                      </div></div>
+                    <button className="button" onClick={() => this.props.removeFromCart(item)}>Remove</button>
                   </div>
-                  <div>
-                    {formatCurrency(item.price)} x {item.count}
-                    <button className="button" onClick={() => this.props.removeFromCart(item)}>Remove</button></div>
-                </div>
-              </li>
-            ))}
+
+                </li>
+              ))}</div>
           </ul>
         </div>
         <div className="cart">
           <div className="total">
-            <div>
-              Total: {" "}
-              {formatCurrency(cartItems.reduce((a, c) => a + c.price * c.count, 0))}</div>
+            Total: {" "}
+            {formatCurrency(cartItems.reduce((a, c) => a + c.price * c.count, 0))}
           </div>
         </div>
       </div >

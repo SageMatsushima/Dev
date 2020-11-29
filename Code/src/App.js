@@ -20,31 +20,32 @@ class App extends Component {
 
   removeFromCart = (product) => {
     const cartItems = this.state.cartItems.slice();
-    let inCart = false;
-    // cartItems.forEach((item) => {
-    //   if (item.count > 1) {
-    //     item.count--;
-    // inCart = true;
-    //   }
-    //   if (item.count === 1) {
-    this.setState({
-      cartItems: cartItems.filter((x) => x._id !== product._id)
+    let inCart = true;
+    cartItems.forEach((item) => {
+      if (item._id === product._id && item.count > 1) {
+        item.count--;
+        cartItems.length--;
+        inCart = false;
+        console.log(cartItems)
+        this.setState({ cartItems })
+      }
     })
-    // this.setState({ cartItems });
-    // console.log(cartItems)
-    // this.setState({
-    // cartItems: cartItems.filter((x) => x._id !== product._id),
-    // }
-    // }
+    if (inCart) {
+      this.setState({
+        cartItems: cartItems.filter((item) => item._id !== product._id),
+      })
+    }
   };
 
   addToCart = (product) => {
     const cartItems = this.state.cartItems.slice();
+    console.log(cartItems)
     let inCart = false;
     cartItems.forEach((item) => {
       if (item._id === product._id) {
         item.count++;
         inCart = true;
+        cartItems.length++;
       }
     });
     if (!inCart) {
@@ -102,19 +103,21 @@ class App extends Component {
         </header>
         <main>
           <div className="content">
+            <div className="cart">
+              <Cart cartItems={this.state.cartItems} removeFromCart={this.removeFromCart} />
+            </div>
             <div className="main">
-              <Filter count={this.state.products.length}
+              <Filter
+                count={this.state.products.length}
                 types={this.state.types}
                 sort={this.state.sort}
                 typeFilter={this.typeFilter}
                 evolutionFilter={this.evolutionFilter}
                 sortProducts={this.sortProducts} />
-
               <Products products={this.state.products} addToCart={this.addToCart} />
-              <div className="cart">
-                <Cart cartItems={this.state.cartItems} removeFromCart={this.removeFromCart} />
-              </div>
             </div>
+
+
 
           </div>
         </main>
