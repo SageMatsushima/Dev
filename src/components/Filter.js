@@ -5,11 +5,13 @@ export default class Filter extends Component {
         return (
             <div className="filter">
                 <div>{this.props.count} Products</div>
+                {/* adds a dropdown button for the sort method */}
                 <div>Order{" "}<select className="filterName" value={this.props.sort} onChange={this.props.sortProducts}>
-                    <option>All</option>
+                    <option value="">All</option>
                     <option value="lowest">lowest</option>
                     <option value="highest">highest</option>
                 </select></div>
+                {/* adds a dropdown button for the type filter method */}
                 <div>Type{" "}<select className="filterName" value={this.props.type} onChange={this.props.typeFilter}>
                     <option value="">All</option>
                     <option value="Bug ">Bug</option>
@@ -25,6 +27,7 @@ export default class Filter extends Component {
                     <option value="Psychic ">Psychic</option>
                     <option value="Water ">Water</option>
                 </select></div>
+                {/* adds a dropdown button for the evolution filter method */}
                 <div>Evolution{" "}<select className="filterName" value={this.props.evolution} onChange={this.props.evolutionFilter}>
                     <option value="">All</option>
                     <option value="1">1</option>
